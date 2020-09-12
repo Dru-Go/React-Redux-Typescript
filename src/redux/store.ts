@@ -1,6 +1,6 @@
 import {createStore, combineReducers } from 'redux'
 import Reducer from './reducers'
-import { composeWithDevTools } from 'redux-devtools-extension'
+import { devToolsEnhancer } from 'redux-devtools-extension'
 
 export const rootReducer = combineReducers({
     employees: Reducer
@@ -8,4 +8,4 @@ export const rootReducer = combineReducers({
 
 export type AppState = ReturnType<typeof rootReducer> 
 
-export const store = createStore(rootReducer, composeWithDevTools());
+export const store = createStore(rootReducer, devToolsEnhancer({}));

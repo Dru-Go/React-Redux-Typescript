@@ -1,9 +1,21 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Row from './row';
+import { AppState } from '../redux/store'
+import { Employee } from '../redux/types'
+// TODO Add the state to be looped 
+
+interface Props {
+    employeeState: Employee[];
+    actions: any;
+}
 
 
-function Table() {
+function Table(props: any) {
+    console.log(props);
+    const employees = useSelector((state: AppState) => state.employees);
+
     return (
         <Tables>
             <thead>
@@ -16,9 +28,9 @@ function Table() {
                 </tr>
             </thead>
             <tbody>
-                <Row index={1} name="Burra" date_of_birth="12/30/20" gender="M" salary={1200} />
-                <Row index={2} name="Burra" date_of_birth="12/30/20" gender="M" salary={1200} />
-                <Row index={3} name="Burra" date_of_birth="12/30/20" gender="M" salary={1200} />
+                {
+                    employees.map((empl, i) => <Row index={i} name={empl.name} date_of_birth={empl.date_of_birth} gender={empl.gender} salary={empl.salary} />)
+                }
             </tbody>
         </Tables>
     )

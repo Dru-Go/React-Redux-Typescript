@@ -16,7 +16,7 @@ export interface EditAction {
 
 export interface RemoveAction {
     type: typeof DELETE_EMPLOYEE;
-    id: string;
+    name: string;
 }
 
 export type EmployeeActionTypes = AddAction | EditAction | RemoveAction // | more . . .

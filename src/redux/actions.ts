@@ -11,7 +11,7 @@ export const editEmployee = (employee: Employee) : AppActions => ({
     employee
 })
 
-export const removeEmployee = (id: string) : AppActions => ({
+export const removeEmployee = (name: string) : AppActions => ({
     type: "DELETE_EMPLOYEE",
-    id
+    name
 })

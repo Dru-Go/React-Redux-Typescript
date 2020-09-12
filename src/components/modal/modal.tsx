@@ -10,6 +10,8 @@ import {
   Backdrop,
 } from './modals.style';
 
+// TODO Adding the form / confirmation message
+
 export interface ModalProps {
   isShown: boolean;
   hide: () => void;
