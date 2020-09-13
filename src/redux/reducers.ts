@@ -4,19 +4,19 @@ import { EmployeeActionTypes , ADD_EMPLOYEE, EDIT_EMPLOYEE, DELETE_EMPLOYEE} fro
  const initialState: Employee[] = [
      {
          name: "Toys",
-         date_of_birth: "12/34/21",
+         date_of_birth: new Date().toDateString(),
          gender: "male",
          salary: 123
      },
      {
          name: "Poys",
-         date_of_birth: "12/34/21",
+         date_of_birth: new Date().toDateString(),
          gender: "female",
          salary: 1223
      },
      {
          name: "Koys",
-         date_of_birth: "12/34/21",
+         date_of_birth: new Date().toDateString(),
          gender: "male",
          salary: 123
      }

@@ -13,7 +13,6 @@ interface Props {
 
 
 function Table(props: any) {
-    console.log(props);
     const employees = useSelector((state: AppState) => state.employees);
 
     return (

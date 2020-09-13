@@ -1,8 +1,8 @@
 import React from 'react'
+import Table from './components/table'
 import { Modal } from './components/modal/modal';
 import { useModal } from './components/modal/useModal';
-import Table from './components/table'
-
+import {Form } from './components/forms/newForm'
 interface HomePageProps{
     name?: string
     date_of_birth?:string
@@ -14,12 +14,13 @@ interface HomePageState{}
 
 const Home = () => {
     const { isShown, toggle } = useModal();
-    const content = <>Hey, I'm a model.</>;
+    const content = <><Form close={toggle}/></>;
+
     return (
         <>
-            <button onClick={toggle}>Open modal</button>
             <Table/>
-            <Modal isShown={isShown} headerText="Header" hide={toggle} modalContent={content} />
+            <Modal isShown={isShown} headerText="New" hide={toggle} modalContent={content} />
+            <div onClick={toggle}>New</div>
         </>
     ); 
 }
