@@ -1,32 +1,32 @@
-import React from "react";
+import React, { Dispatch } from "react";
 import { useForm } from "react-hook-form";
-
-export enum GenderEnum {
-    female = "female",
-    male = "male"
-}
-
-interface IFormInput {
-    name: string;
-    date_of_birth: string | Date;
-    gender: GenderEnum;
-    salary: number;
-}
+import { useDispatch } from 'react-redux';
+import { EditAction } from '../../redux/actions_types'
+import { Employee } from "../../redux/types"
 
 interface Props {
-    name: string;
-    date_of_birth: string;
-    gender: GenderEnum;
-    salary: number;
+   empl: Employee
     close: () => void
 }
 
-export function Form(props: Props | null) {
-    const { register, handleSubmit } = useForm<IFormInput>();
+export function Form({empl, close}: Props) {
+    const Dispatcher = useDispatch<Dispatch<EditAction>>();
 
-    const onSubmit = (data: IFormInput) => {
-        console.log(data)
-        props?.close();
+    const { register, handleSubmit } = useForm<Employee>();
+
+    const onSubmit = (employee: Employee) => {
+        console.log(employee);
+        const emp: Employee = {
+            _id: empl._id,
+            name: employee.name !== '' ? employee.name : empl.name,
+            date_of_birth: employee.date_of_birth !== '' ? employee.date_of_birth : empl.date_of_birth,
+            gender: employee.gender,
+            salary: employee.salary.toString() !== '' ? employee.salary.toString() : empl.salary.toString()
+        }
+
+        console.log(emp);
+        close(); // Closes the modal
+        Dispatcher({ type: 'EDIT_EMPLOYEE', empl: emp })
     };
 
     return (
@@ -34,22 +34,22 @@ export function Form(props: Props | null) {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label>Name</label>
-                    <input name="name" ref={register} placeholder={props?.name} />
+                    <input name="name" ref={register} placeholder={empl.name} />
                 </div>
                 <div>
                     <label>Birth date</label>
-                    <input name="date_of_birth" ref={register} type="date" placeholder={props?.date_of_birth} />
+                    <input name="date_of_birth" ref={register} type="date" placeholder={empl.date_of_birth} />
                 </div>
                 <div>
                     <label>Gender</label>
                     <select name="gender" ref={register}>
-                        <option value="female" selected={props?.gender === 'female'}>female</option>
-                        <option value="male" selected={props?.gender === 'male'}>male</option>
+                        <option value="female" selected={empl.gender === 'female'}>female</option>
+                        <option value="male" selected={empl.gender === 'male'}>male</option>
                     </select>
                 </div>
                 <div>
                     <label>Salary</label>
-                    <input name="salary" ref={register} placeholder={props?.salary.toString()} />
+                    <input name="salary" ref={register} placeholder={empl.salary.toString()} />
                 </div>
                 <input type="submit" />
             </form>

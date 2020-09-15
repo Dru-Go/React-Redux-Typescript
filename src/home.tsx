@@ -1,28 +1,40 @@
-import React from 'react'
+import React, { Dispatch, FC } from "react";
+import { connect } from "react-redux";
+import { Employee } from "./redux/types";
+import New from './components/new'
 import Table from './components/table'
-import { Modal } from './components/modal/modal';
-import { useModal } from './components/modal/useModal';
-import {Form } from './components/forms/newForm'
-interface HomePageProps{
-    name?: string
-    date_of_birth?:string
-    gender?:string
-    salary?:number
+
+import { AppState } from "./redux/store";
+import { AppActions } from "./redux/actions_types";
+import { addEmployee, editEmployee, removeEmployee, allEmployees } from "./redux/actions";
+
+
+const Home: FC = (props: any) => {
+  props.fetchEmployees()
+
+
+  console.log("Home State", props);
+  return (
+    <>
+      <Table employees={props.employees} />
+      <New/>
+    </>
+  );
 }
 
-interface HomePageState{}
-
-const Home = () => {
-    const { isShown, toggle } = useModal();
-    const content = <><Form close={toggle}/></>;
-
-    return (
-        <>
-            <Table/>
-            <Modal isShown={isShown} headerText="New" hide={toggle} modalContent={content} />
-            <div onClick={toggle}>New</div>
-        </>
-    ); 
+const mapStateToProps = (state: AppState) => {
+  return {
+    employees: state.employees
+  }
 }
 
-export default Home
+const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => {
+  return {
+    fetchEmployees: () => dispatch(allEmployees()),
+    create: (empl: Employee) => dispatch(addEmployee(empl)),
+    update: (empl: Employee) => dispatch(editEmployee(empl)),
+    remove: (id: string) => dispatch(removeEmployee(id)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

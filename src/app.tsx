@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import Home from './home'
 
-const App: FC = (props: any) => {
+const App: FC = () => {
     return (
-        <Home {...props} />
+        <Home/>
     );
 };
 

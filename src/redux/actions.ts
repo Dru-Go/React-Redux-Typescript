@@ -6,12 +6,26 @@ export const addEmployee = (employee: Employee) : AppActions => ({
     employee 
 })
 
-export const editEmployee = (employee: Employee) : AppActions => ({
+export const editEmployee = (empl: Employee) : AppActions => ({
     type: "EDIT_EMPLOYEE",
-    employee
+    empl
 })
 
-export const removeEmployee = (name: string) : AppActions => ({
+export const removeEmployee = (id: string) : AppActions => ({
     type: "DELETE_EMPLOYEE",
-    name
+    id
+})
+
+export const allEmployees = (): AppActions => ({
+    type: "LOAD_EMPLOYEE_DATA",
+})
+
+export const requestSuccessfull = (message: string): AppActions => ({
+    type: "LOAD_SUCCESS",
+    message
+})
+
+export const requestFaliure = (error: string): AppActions => ({
+    type: "LOAD_FALIURE",
+    error
 })

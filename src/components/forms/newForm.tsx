@@ -1,28 +1,23 @@
-import React from "react";
+import React, { Dispatch } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from 'react-redux';
+import { AddAction } from '../../redux/actions_types'
+import { Employee } from "../../redux/types"
 
-export enum GenderEnum {
-    female = "female",
-    male = "male"
-}
-
-interface IFormInput {
-    name: string;
-    date_of_birth: string | Date;
-    gender: GenderEnum;
-    salary: number;
-}
 
 interface Props {
     close: () => void
 }
 
-export function Form(props: Props) {
-    const { register, handleSubmit } = useForm<IFormInput>();
+export function Form({close}: Props) {
+    const Dispatcher = useDispatch<Dispatch<AddAction>>();
 
-    const onSubmit = (data: IFormInput) => {
-        console.log(data)
-        props?.close();
+    const { register, handleSubmit } = useForm<Employee>();
+
+    const onSubmit = (employee: Employee) => {
+        console.log(employee)
+        close();
+        Dispatcher({ type: 'ADD_EMPLOYEE', employee })
     };
 
     return (
@@ -30,11 +25,11 @@ export function Form(props: Props) {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label>Name</label>
-                    <input name="name" ref={register}  />
+                    <input name="name" ref={register} />
                 </div>
                 <div>
                     <label>Birth date</label>
-                    <input name="date_of_birth" ref={register} type="date"  />
+                    <input name="date_of_birth" ref={register} type="date" />
                 </div>
                 <div>
                     <label>Gender</label>
