@@ -1,49 +1,53 @@
 import React, { Dispatch } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from 'react-redux';
-import { AddAction } from '../../redux/actions_types'
-import { Employee } from "../../redux/types"
-
+import { useDispatch } from "react-redux";
+import { CreateRequest } from "../../redux/actions/actions_types";
+import { Employee } from "../../redux/types/types";
+import {
+  StyledForm,
+  StyledInput,
+  StyledButton,
+} from "./forms.styles";
 
 interface Props {
-    close: () => void
+  close: () => void;
 }
 
-export function Form({close}: Props) {
-    const Dispatcher = useDispatch<Dispatch<AddAction>>();
+export function Form({ close }: Props) {
+  const Dispatcher = useDispatch<Dispatch<CreateRequest>>();
 
-    const { register, handleSubmit } = useForm<Employee>();
+  const { register, handleSubmit } = useForm<Employee>();
 
-    const onSubmit = (employee: Employee) => {
-        console.log(employee)
-        close();
-        Dispatcher({ type: 'ADD_EMPLOYEE', employee })
-    };
+  const onSubmit = (empl: Employee) => {
+    console.log(empl);
+    close();
+    Dispatcher({ type: "CREATE_EMPLOYEE_REQUEST", empl });
+  };
 
-    return (
-        <>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <label>Name</label>
-                    <input name="name" ref={register} />
-                </div>
-                <div>
-                    <label>Birth date</label>
-                    <input name="date_of_birth" ref={register} type="date" />
-                </div>
-                <div>
-                    <label>Gender</label>
-                    <select name="gender" ref={register}>
-                        <option value="female">female</option>
-                        <option value="male" >male</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Salary</label>
-                    <input name="salary" ref={register} />
-                </div>
-                <input type="submit" />
-            </form>
-        </>
-    );
+  return (
+    <>
+      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label>Name</label>
+          <StyledInput name="name" ref={register} />
+        </div>
+        <div>
+          <label>Birth date</label>
+          <StyledInput name="date_of_birth" ref={register} type="date" />
+        </div>
+        <div>
+          <label>Gender</label>
+          <select name="gender" ref={register}>
+            <option value="female">female</option>
+            <option value="male">male</option>
+          </select>
+        </div>
+        <div>
+          <label>Salary</label>
+          <StyledInput name="salary" ref={register} />
+        </div>
+        <StyledButton type="submit">submit</StyledButton>
+      </StyledForm>
+    </>
+  );
 }

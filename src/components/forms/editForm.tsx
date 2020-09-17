@@ -1,8 +1,8 @@
 import React, { Dispatch } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
-import { EditAction } from '../../redux/actions_types'
-import { Employee } from "../../redux/types"
+import { EditAction } from '../../redux/actions/actions_types'
+import { Employee } from "../../redux/types/types"
 
 interface Props {
    empl: Employee
@@ -21,7 +21,7 @@ export function Form({empl, close}: Props) {
             name: employee.name !== '' ? employee.name : empl.name,
             date_of_birth: employee.date_of_birth !== '' ? employee.date_of_birth : empl.date_of_birth,
             gender: employee.gender,
-            salary: employee.salary.toString() !== '' ? employee.salary.toString() : empl.salary.toString()
+            salary: employee.salary !== '' ? employee.salary.$numberDecimal : empl.salary.$numberDecimal
         }
 
         console.log(emp);
@@ -49,7 +49,7 @@ export function Form({empl, close}: Props) {
                 </div>
                 <div>
                     <label>Salary</label>
-                    <input name="salary" ref={register} placeholder={empl.salary.toString()} />
+                    <input name="salary" ref={register} placeholder={empl.salary.$numberDecimal.toString()} />
                 </div>
                 <input type="submit" />
             </form>

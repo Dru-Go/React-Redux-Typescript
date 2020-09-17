@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import colors from '../../utils/colors';
 export const Wrapper = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 700;
-  width: inherit;
+  width: 25em;
   outline: 0;
 `;
 export const Backdrop = styled.div`
@@ -32,8 +33,9 @@ export const Header = styled.div`
 `;
 export const HeaderText = styled.div`
   color: #fff;
+  text-align: center;
   align-self: center;
-  color: lightgray;
+  color: ${colors.neutral_200};
 `;
 export const CloseButton = styled.button`
   font-size: 0.8rem;
