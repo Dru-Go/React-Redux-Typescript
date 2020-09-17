@@ -1,7 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import * as Api from "../services/services";
-import { Employee } from "../types/types";
-import { logger } from "../actions/logger";
+import { logger } from "../utils/logger";
+import {getAll, create, update, remove} from './calls'
 import {
   GET_USERS_SUCCESS,
   GET_USERS_REQUESTED,
@@ -14,37 +13,6 @@ import {
 } from "../actions/actions_types";
 // Watchers
 
-const getAll = () => {
-  return Api.all().then((res) => {
-    const employees: Employee[] = [...res]
-    logger.info("Promices ", employees);
-    return employees;
-  });
-};
-
-const create = (empl: Employee) => {
-  return Api.create(empl).then((res) => {
-    const employee = res
-    logger.info("Created Employee ", employee);
-    return employee;
-  });
-};
-
-const update = (empl: Employee) => {
-  return Api.edit(empl).then((res) => {
-    const employee = res
-    logger.info("Updated Employee ", employee);
-    return employee;
-  });
-};
-
-const remove = (empl: Employee) => {
-  return Api.remove(empl._id).then((res) => {
-    const employee = res
-    logger.info("Deleted Employee ", employee);
-    return employee;
-  });
-};
 
 function* fetchEmpl() {
   try {

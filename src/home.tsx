@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Employee } from "./redux/types/types";
 import New from "./components/buttons/new";
 import Table from "./components/table/table";
-import {logger} from './redux/actions/logger'
+import {logger} from './redux/utils/logger'
 import { AppState } from "./redux/store/store";
 import { AppActions } from "./redux/actions/actions_types";
 import styled from 'styled-components'
