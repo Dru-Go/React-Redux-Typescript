@@ -3,7 +3,7 @@ export interface Employee {
     name: string
     date_of_birth: string
     gender: GenderEnum
-    salary: string
+    salary: any
 }
 
 

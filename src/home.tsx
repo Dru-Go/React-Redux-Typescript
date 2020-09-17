@@ -1,32 +1,47 @@
-import React, { Dispatch, FC } from "react";
+import React, { Dispatch, useEffect, FC } from "react";
 import { connect } from "react-redux";
-import { Employee } from "./redux/types";
-import New from './components/new'
-import Table from './components/table'
-
-import { AppState } from "./redux/store";
-import { AppActions } from "./redux/actions_types";
-import { addEmployee, editEmployee, removeEmployee, allEmployees } from "./redux/actions";
-
+import { Employee } from "./redux/types/types";
+import New from "./components/buttons/new";
+import Table from "./components/table/table";
+import {logger} from './redux/actions/logger'
+import { AppState } from "./redux/store/store";
+import { AppActions } from "./redux/actions/actions_types";
+import styled from 'styled-components'
+import { typeScale, primaryFont } from './utils/typography'
+import {
+  addEmployee,
+  editEmployee,
+  removeEmployee,
+  allEmployees,
+} from "./redux/actions/actions";
 
 const Home: FC = (props: any) => {
-  props.fetchEmployees()
 
+  useEffect(() => {
+   logger.info("Dispatching from Home")
+    props.fetchEmployees();
+  }, [])
 
   console.log("Home State", props);
   return (
     <>
-      <Table employees={props.employees} />
-      <New/>
+    <Header>Employes Management</Header>
+      <Table empl={props.employees} loading={false} />
+      <New />
     </>
   );
-}
+};
+
+const Header = styled.div`
+  font-size: ${typeScale.header4};
+  font-type: ${primaryFont};
+  text-align: center;
+  margin-top: 30px;
+`
 
 const mapStateToProps = (state: AppState) => {
-  return {
-    employees: state.employees
-  }
-}
+  return state;
+};
 
 const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => {
   return {
@@ -34,7 +49,7 @@ const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => {
     create: (empl: Employee) => dispatch(addEmployee(empl)),
     update: (empl: Employee) => dispatch(editEmployee(empl)),
     remove: (id: string) => dispatch(removeEmployee(id)),
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
