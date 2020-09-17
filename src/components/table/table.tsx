@@ -1,10 +1,8 @@
 import React, {FC } from "react";
-import styled from "styled-components";
 import Row from "./row";
 import { Employee } from "../../redux/types/types";
-import {logger} from '../../redux/actions/logger'
-import colors from '../../utils/colors'
-import {typeScale, primaryFont} from '../../utils/typography'
+import {logger} from '../../redux/utils/logger'
+import Tables from './table.style'
 // TODO Add the state to be looped
 
 interface Props {
@@ -28,40 +26,18 @@ logger.info("Table props", props);
         </tr>
       </thead>
       <tbody>
-        {props.empl.map((empl: Employee, i: number) => (
+
+        {props.empl && props.empl.map((empl: Employee, i: number) => (
           <Row
             empl = {empl}
             index = {i}
           />
         ))}
+        {props.empl === undefined && <div>Issue loading the tables</div> }
       </tbody>
     </Tables>
   );
 }
-
-const Tables = styled.table`
-  border-spacing: 0;
-  margin: auto;
-  empty-cells: show;
-  margin-top: 20px;
-  width: 50%;
-  th,
-  td {
-    padding: 10px;
-    text-align: left;
-    font-type: ${primaryFont};
-  }
-  thead{
-    background-color: ${colors.neutral_300}; 
-  }
-  th{
-    font-size: ${typeScale.header5};
-  }
-  td{
-    font-size: ${typeScale.paragraph}
-  }
-`;
-
 
 
 export default Table;

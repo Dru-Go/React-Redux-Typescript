@@ -1,9 +1,10 @@
 import React from "react";
+import editSVG from "./assets/edit.svg";
 import { Modal } from "../modal/modal";
-import { useModal } from "../modal/useModal";
 import { Form } from "../forms/newForm";
-import { CreateButton } from "./buttons";
-export default function New() {
+import { useModal } from "../modal/useModal";
+import {EditStyled} from './buttons'
+function Edit() {
   const { isShown, toggle } = useModal();
   const content = (
     <>
@@ -11,14 +12,16 @@ export default function New() {
     </>
   );
   return (
-    <div>
+    <EditStyled>
       <Modal
         isShown={isShown}
         headerText="New"
         hide={toggle}
         modalContent={content}
       />
-      <CreateButton onClick={toggle}>New</CreateButton>
-    </div>
+      <img src={editSVG} alt="edit svg" />
+    </EditStyled>
   );
 }
+
+export default Edit;

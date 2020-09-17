@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { CreateRequest } from "../../redux/actions/actions_types";
 import { Employee } from "../../redux/types/types";
+import {StyledSelect} from './forms.styles'
 import {
   StyledForm,
   StyledInput,
@@ -37,16 +38,16 @@ export function Form({ close }: Props) {
         </div>
         <div>
           <label>Gender</label>
-          <select name="gender" ref={register}>
+          <StyledSelect name="gender" ref={register}>
             <option value="female">female</option>
             <option value="male">male</option>
-          </select>
+          </StyledSelect>
         </div>
         <div>
           <label>Salary</label>
           <StyledInput name="salary" ref={register} />
         </div>
-        <StyledButton type="submit">submit</StyledButton>
+        <StyledButton type="submit">Submit</StyledButton>
       </StyledForm>
     </>
   );

@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import colors from '../../utils/colors'
-import {primaryFont, typeScale} from '../../utils/typography'
+import colors from "../../utils/colors";
+import { primaryFont, typeScale } from "../../utils/typography";
 
-
- export const CreateButton = styled.button`
+export const CreateButton = styled.button`
   cursor: pointer;
   background: ${colors.primary_400};
   color: ${colors.neutral_400};
@@ -16,12 +15,10 @@ import {primaryFont, typeScale} from '../../utils/typography'
   border-radius: 3px;
 `;
 
-
-export const Edit = styled.div`
-  /* ... */
+export const EditStyled = styled.div`
+    cursor: pointer;
 `;
 
-export const Delete = styled.div`
-  /* ... */
+export const DeleteStyled = styled.div`
+    cursor: pointer;
 `;
-

@@ -1,5 +1,6 @@
 
 import styled, {css} from "styled-components";
+import colors from "../../utils/colors";
 
 export const sharedStyles = css`
   background-color: #eee;
@@ -29,7 +30,7 @@ export const StyledFieldset = styled.fieldset`
 
 export const StyledButton = styled.button`
   display: block;
-  background-color: #f7797d;
+  background-color: ${colors.primary_100};
   color: #fff;
   font-size: 0.9rem;
   border: 0;
@@ -54,4 +55,29 @@ export const StyledForm = styled.form`
   border-radius: 10px;
   box-sizing: border-box;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 `;
+
+export const StyledSelect = styled.select`
+  width: 100%;
+  height: 35px;
+  background: white;
+  color: gray;
+  padding-left: 5px;
+  font-size: 14px;
+  border: none;
+  margin-left: 10px;
+  margin-bottom: 20px;
+
+  option {
+    color: black;
+    background: white;
+    font-weight: small;
+    display: flex;
+    white-space: pre;
+    min-height: 20px;
+    padding: 0px 2px 1px;
+  }
+`;
+
+
