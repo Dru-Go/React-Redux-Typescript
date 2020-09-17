@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import ReactDOM from 'react-dom';
+import closeSVG from './assets/close.svg'
 import {
   Wrapper,
   Header,
@@ -11,7 +12,6 @@ import {
 } from './modals.style';
 
 // TODO Adding the form / confirmation message
-
 export interface ModalProps {
   isShown: boolean;
   hide: () => void;
@@ -31,7 +31,7 @@ export const Modal: FC <ModalProps> = ({
         <StyledModal>
           <Header>
             <HeaderText>{headerText}</HeaderText>
-            <CloseButton onClick={hide}>X</CloseButton>
+            <CloseButton onClick={hide}><img src={closeSVG} alt="Close SVG"/></CloseButton>
           </Header>
           <Content>{modalContent}</Content>
         </StyledModal>

@@ -1,44 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Frontend for the Employee CRUD operations
 
-## Available Scripts
 
-In the project directory, you can run:
+## Docs
 
-### `npm start`
+  - [Objectives](#objective)
+  - [Codebase](#codebase)
+    - [Technologies](#technologies)
+    - [Folder Structure](#folder-structure)
+    - [Code Style](#code-style)
+  - [First time setup](#first-time-setup)
+    - [Running the app locally](#running-the-app-locally)
+- [Technical](#Technical)
+  - [Deployment](#Deployment)
+- [Remarks](#Remarks)
+ 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Objective 
+Create a simple CRUD application for an employee management
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Technologies
+- ** React Application **: Almost all of the code you'll touch in this codebase will be Typescript.
 
-### `npm run build`
+- **Front End**
+	- React
+    - Typescript
+    - Redux
+    - Redux-saga
+    - Styled-components
+    - Axios
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Folder structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Client 
 
-### `npm run eject`
+```sh
+frontend/
+├── components
+├──── forms              # contains major form components like new and edit forms 
+├──── buttons            # contains buttons to be used in the page
+├──── modal              # contains the modals and the styles   
+├──── table              # contains the table, rows and their styles
+├── redux                # contains all redux related actions reducers and types 
+├──── reducers           # contains the employee reducers   
+├──── sagas              # contains redux sagas to be called async with dispatch calls  
+├──── services           # services hold all the major API calls 
+├──── store              # 
+├──── types              # major types to be used like employee   
+└── utils                # hHere holds the design system guidelines like colors and typography 
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## First time setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Running the app locally
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- ### Backend
 
-## Learn More
+```sh
+git clone https://github.com/Dru-Go/React-Redux-Typescript.git 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npm i
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm start
+
+```
+## Technical
+
+
+## Remarks
+
+- Learned a huge deal about redux saga and typescript :+1:
+- May have used some amount of the type any, but coming from a background of javascript. Types were only used with prop types :broken_heart:
+- May have used a great deal of emojis in my commits just to make it more attractive :blush: :smile:
+- Really loved using redux saga :thumbsup:  
+- Took me some time but i did the best i could with what i have, Very greatfull :smiley: :relaxed: :joy:
