@@ -18,9 +18,10 @@ import {
 const Home: FC = (props: any) => {
 
   useEffect(() => {
-   logger.info("Dispatching from Home")
+    logger.info("Dispatching from Home")
     props.fetchEmployees();
-  }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   console.log("Home State", props);
   return (
