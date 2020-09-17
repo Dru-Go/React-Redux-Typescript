@@ -25,7 +25,7 @@ const EmployeeReducer = (state = initialState, action: AppActions) => {
 
     case EDIT_EMPLOYEE:
       return state.map((empl: Employee) => {
-        if (empl.name === action.empl.name)
+        if (empl._id === action.empl._id)
           return { ...empl, ...action.empl };
         else return empl;
       });
