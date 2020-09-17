@@ -1,6 +1,6 @@
 import {createGlobalStyle} from 'styled-components';
 import { primaryFont } from './typography'
-import Colors from './colors'
+import colors from './colors'
 import { normalize} from 'polished'
 
 
@@ -16,13 +16,9 @@ html {
 }
 
 body {
-    background-color: ${Colors.primary_400};
+    background-color: ${colors.primary_400};
     margin: 0;
     font-family: ${primaryFont};
 }
 
-main{
-    width: 90%;
-    margin: 0 auto;
-}
-`
+`;
